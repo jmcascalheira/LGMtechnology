@@ -1,0 +1,441 @@
+---
+title: "Elongated products"
+author: 
+  - name: João Cascalheira
+    email: jmcascalheira@ualg.pt
+    footnote: Corresponding author
+
+address: 
+  - code: ICArEHB
+    address: | 
+      FCHS, 
+      Universidade do Algarve,
+      Campus de Gambelas,
+      8005-139 Faro, Portugal 
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output: 
+    rmarkdown::html_document:
+        number_sections: yes
+        toc: yes
+   
+---
+
+```{r setup, include = FALSE, echo = FALSE}
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  comment = "#>"
+  )
+
+library(knitr)
+library(rmarkdown)
+library(git2r)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(tab)
+library(forcats)
+library(FactoMineR)
+library(factoextra)
+library(multcompView)
+library(RcmdrMisc)
+library(WRS2)
+
+```
+
+
+```{r load_data, echo = FALSE}
+
+# Load data, calculate Elongation/Flattening for blanks and tidy data (including lumping categories with little (5%) representation into 'Other')
+
+blanks <- read.csv("../data/raw_data/blanks.csv")
+
+elongated_tidy <- blanks %>%
+  filter(Class == "Elongated product") %>%
+  drop_na(Length, Width, Thickness) %>%
+  mutate(Elongation = Length / Width) %>%
+  mutate(Flattening = Width / Thickness) %>%
+  mutate(Profile = fct_lump(Profile, prop = 0.05)) %>%
+  mutate(EdgeShape = fct_lump(EdgeShape, prop = 0.05)) %>%
+  mutate(CrossSection = fct_lump(CrossSection, prop = 0.05)) %>%
+  mutate(PlatformType = fct_lump(PlatformType, prop = 0.05)) %>%
+  mutate(CortexLoc = fct_lump(CortexLoc, prop = 0.05)) %>%
+  mutate(DorsalPattern = fct_lump(DorsalPattern, prop = 0.05)) %>%
+  mutate(Termination = fct_lump(Termination, prop = 0.05)) %>%
+  mutate(CortexPerc = dplyr::recode(CortexPerc, "75-95%" = "76-100%", "25-75%" ="26-75%", "100%" = "76-100%", "<25%" = "1-25%", ">95%" = "76-100%", "0%" = "0%")) %>%
+  mutate(ScarNumber = as.factor(ScarNumber)) %>%
+  mutate(DorsalPattern = dplyr::recode(DorsalPattern, "Unidentifiable" = "Other")) %>%
+  mutate(ScarNumber = dplyr::recode(ScarNumber, "4" = "4 or more", "5" = "4 or more", "6" = "4 or more", "7" = "4 or more", "8" = "4 or more", "9" = "4 or more"))
+
+# Rename Context column
+colnames(elongated_tidy)[1] <- "Context"
+
+# Convert ScarNumber to factor
+elongated_tidy$ScarNumber <- factor(elongated_tidy$ScarNumber)
+
+# Bin continous variables ("natural" is used to cut between bins to be determined by a k-means clustering)
+elongated_tidy$ElongFact <- binVariable(elongated_tidy$Elongation, bins = 2, method = "natural", labels = c("low", "high"))
+elongated_tidy$FlattFact <- binVariable(elongated_tidy$Flattening, bins = 2, method = "natural", labels = c("low", "high"))
+
+```
+
+```{r elongated_indices, echo=FALSE}
+
+ggplot(elongated_tidy, aes(x=Width, y=Length, color=ElongFact)) + geom_point()
+
+ggplot(elongated_tidy, aes(x=Thickness, y=Width, color=FlattFact)) + geom_point()
+
+
+```
+
+
+```{r reduction_plots, echo=FALSE}
+
+
+reduction <- blanks %>%
+  drop_na(Length, Width, Thickness) %>%
+  mutate(Area = Width * Length) %>%
+  mutate(CortexPerc = dplyr::recode(CortexPerc, "75-95%" = "76-100%", "25-75%" ="26-75%", "100%" = "76-100%", "<25%" = "1-25%", ">95%" = "76-100%", "0%" = "0%"))
+
+colnames(reduction)[1] <- "Context"
+  
+reduction <- reduction %>%   
+  dplyr::select(Context, CortexPerc, Area) 
+  #mutate(Context = dplyr::recode(Context, "AMB II" = "AMB", "AMB IV" = "AMB", "AMB VI" = "AMB", "PAP 4'00-4'75" = "PAP",
+  #                               "PAP 4'75-5'25" = "PAP", "PAP 5'25-6'25" = "PAP", "VB A" = "VB",
+  #                              "VB B" = "VB", "VB C" = "VB"))
+
+reduction$ScarNumber <- as.numeric(reduction$ScarNumber)
+
+reduction$CortexPerc <- factor(reduction$CortexPerc, levels = c("0%","1-25%","26-75%","76-100%"))
+
+
+data_summary <- function(data, varname, groupnames){
+  require(plyr)
+  summary_func <- function(x, col){
+    c(mean = mean(x[[col]], na.rm=TRUE),
+      sd = sd(x[[col]], na.rm=TRUE))
+  }
+  data_sum<-ddply(data, groupnames, .fun=summary_func,
+                  varname)
+  data_sum <- rename(data_sum, c("mean" = varname))
+ return(data_sum)
+}
+
+reduction_plot <- data_summary(reduction, varname="Area", 
+                    groupnames=c("Context", "CortexPerc"))
+
+
+ggplot(reduction_plot, aes(x=CortexPerc, y=Area, group=Context, color=Context)) + 
+  geom_line() +
+  geom_point() +
+  theme_classic() +
+  labs(x = "Cortex %")
+
+```
+
+
+```{r elongated_histogram, echo = FALSE}
+
+### Plot width histograms for elongated products
+blades <- blanks_tidy %>%
+  filter(Class == "Elongated product") +
+  ggplot(blades, aes(Width)) +
+  geom_histogram(aes(y = ..density..)) +
+  geom_density() +
+  facet_wrap(~Context, ncol = 2) +
+  scale_y_continuous(labels = scales::percent)
+
+```
+
+
+```{r elongated_cross_table, echo=FALSE}
+
+elongated_table <- elongated_tidy %>% 
+  filter(Class == "Elongated product") %>% 
+  droplevels()
+
+# Set variables
+var_list <- c("PlatformType", "CrossSection", "Profile", "DorsalPattern", "EdgeShape", "Elongation", "Flattening")
+
+# Get cross-tables by chronology using cross_tb() function
+elongated_table <- tabmulti(elongated_table, "Context", var_list,
+                 p.include = FALSE,
+                 n.headings = FALSE,
+                 means.text.label = "none",
+                 freq.text.label = "none")
+
+elongated_table <- elongated_table %>% 
+  as_tibble() %>% 
+  select(" " = Variable, `AMB II`, `AMB IV`, `AMB VI`, `PAP 4'00-4'75`, `PAP 4'75-5'25`, `PAP 5'25-6'25`, `VALM`, `VB A`, `VB B`, `VB C`, Total = Overall)
+
+kable(elongated_table)
+
+
+```
+
+
+```{r MCA_core_exploitation_elongated, echo=FALSE}
+
+# Filter specific categories for MCA analysis
+core_exploitation_elongated <- elongated_tidy %>%
+  filter(CortexPerc != "76-100%") %>%
+  filter(ScarNumber != "0") %>%
+  dplyr::select(Context, CortexPerc, DorsalPattern, ElongFact, ScarNumber) %>%
+  na.omit() %>%
+  droplevels()
+
+# Run MCA
+
+mca_res_core_exploitation_elongated <- MCA(core_exploitation_elongated, graph = FALSE, quali.sup = 1, method = "Burt")
+
+fviz_screeplot(mca_res_core_exploitation_elongated, addlabels = TRUE, ylim = c(0, 45))
+
+fviz_mca_var(mca_res_core_exploitation_elongated, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, invisible = "quali.sup",
+             ggtheme = theme_gray())
+             
+```
+
+
+
+# Variable contribution to MCA solution
+
+```{r}
+
+var_description_core_exploitation_elongated <- data.frame(
+  Dimension = c("Dimension 1", "Dimension 2"),
+  Variability = c("28.9%", "16.5%"),
+  Positive = c("Production of elongated blanks from cores with high amounts of cortex and little amount of removals on debitage surfaces, using only unidireccional strategies",
+    "Use of bidireccional strategies to produce elongated products from cores with some cortical surface on debitage plane, but with complex removal biography"),
+  Negative = c("Removal of highly elongated blanks using bidireccional strategies from cores with no cortex on debitage surface and complex, highly developed, reduction history",
+  "Use of unidireccional or other reduction strategies to produce elongated blanks with small amounts of cortex and few removals on dorsal surfaces"
+))
+
+kable(var_description_core_exploitation_elongated)
+
+```
+
+
+
+```{r ANOVA_comparisons, echo = FALSE}
+
+# List of comparisons to use with grouping labels (dash with no spaces must be the separator)
+comparisons <- c("AMB II-AMB IV", "AMB II-AMB VI", "AMB II-PAP 4'00",
+                 "AMB II-PAP 4'75", "AMB II-PAP 5'25", "AMB II-VALM",
+                 "AMB II-VB A", "AMB II-VB B", "AMB II-VB C",
+                 "AMB IV-AMB VI", "AMB IV-PAP 4'00", "AMB IV-PAP 4'75",
+                 "AMB IV-PAP 5'25", "AMB IV-VALM", "AMB IV-VB A", "AMB IV-VB B",
+                 "AMB IV-VB C", "AMB VI-PAP 4'00", "AMB VI-PAP 4'75",
+                 "AMB VI-PAP 5'25", "AMB VI-VALM", "AMB VI-VB A",
+                 "AMB VI-VB B", "AMB VI-VB C", "PAP 4'00-PAP 4'75",
+                 "PAP 4'00-PAP 5'25", "PAP 4'00-VALM", "PAP 4'00-VB A",
+                 "PAP 4'00-VB B", "PAP 4'00-VB C", "PAP 4'75-PAP 5'25",
+                 "PAP 4'75-VALM", "PAP 4'75-VB A", "PAP 4'75-VB B",
+                 "PAP 4'75-VB C", "PAP 5'25-VALM", "PAP 5'25-VB A",
+                 "PAP 5'25-VB B", "PAP 5'25-VB C", "VALM-VB A", "VALM-VB B",
+                 "VALM-VB C", "VB A-VB B", "VB A-VB C", "VB B-VB C")
+
+```
+
+
+```{r ANOVA_core_exploitation_elongated, echo=FALSE}
+
+## From script tukey_boxplot
+
+# Function below does not allow hyphen between categories
+
+mca <- as.data.frame(mca_res_core_exploitation_elongated$ind)
+context <- as.data.frame(core_exploitation_elongated$Context)
+
+mca <- mca %>%
+  dplyr::select(1:2)
+
+mca <- bind_cols(context, mca)
+
+mca <- mca %>%
+  mutate(context = `core_exploitation_elongated$Context`, "dim1" = coord.Dim.1, "dim2" = coord.Dim.2) %>%
+  dplyr::select(context, dim1, dim2)
+
+mca <- mca %>%
+  mutate(context = dplyr::recode(context, "PAP 5'25-6'25" = "PAP 5'25 6'25",
+                                 "PAP 4'75-5'25" = "PAP 4'75 5'25",
+                                 "PAP 4'00-4'75" = "PAP 4'00 4'75"))
+
+
+# Run bootstrap ANOVA
+boot_anova <- t1waybt(dim1 ~ context, data = mca, tr=.2, nboot=5000)
+
+# Multi-comparison bootstrap
+multi_comp <- mcppb20(dim1 ~ context, data = mca, tr=.2, nboot=5000)
+
+# Convert results to data frame
+multi_comp <- as.data.frame(multi_comp$comp)
+
+# Adjust p-values using FDR method
+#p.value.adjusted <- p.adjust(multi_comp[,6], "fdr")
+
+# Combine with data frame
+#multi_comp <- cbind(multi_comp, p.value.adjusted)
+
+# Add contexts names and transform to column "context"
+row.names(multi_comp) <- comparisons
+multi_comp <- rownames_to_column(multi_comp, "context")
+
+# Boxplot with representation of grouping calculated by multicomparison analysis
+
+# Build list with pairwise p-values
+LABELS <- setNames(multi_comp$`p-value`, multi_comp$context)
+
+# Attribute letters to each grouping based on alpha = .05
+grouping <- data.frame(multcompLetters(LABELS)['Letters'])
+grouping <- rownames_to_column(grouping, "context")
+
+# Colors for boxplot
+my_colors <- c( rgb(143,199,74,maxColorValue = 255),
+                rgb(242,104,34,maxColorValue = 255),
+                rgb(111,145,202,maxColorValue = 255),
+                rgb(254,188,18,maxColorValue = 255),
+                rgb(74,132,54,maxColorValue = 255),
+                rgb(236,33,39,maxColorValue = 255),
+                rgb(165,103,40,maxColorValue = 255))
+
+# Start boxplot
+DIM1_boxplot <- boxplot(mca$dim1 ~ mca$context , ylim=c(min(mca$dim1),
+                        1.1*max(mca$dim1)), col=my_colors[as.numeric(grouping[,2])],
+                        ylab="Dimension 1" , main="", outline = FALSE)
+# Location of labels
+over <- 0.1*max(DIM1_boxplot$stats[nrow(DIM1_boxplot$stats),] )
+
+# Superimpose labels
+text( c(1:nlevels(mca$contex)) , DIM1_boxplot$stats[nrow(DIM1_boxplot$stats),]+over , grouping[,2]  , col=my_colors[as.numeric(grouping[,2])] )
+
+
+```
+
+
+
+
+
+
+
+
+
+```{r MCA_platform_elongated, echo=FALSE}
+
+# Filter specific categories for MCA analysis
+platform_elongated <- elongated_tidy %>%
+  filter(CortexPerc != "76-100%") %>%
+  dplyr::select(Context, PlatformType, CortexPerc, ElongFact) %>%
+  na.omit() %>%
+  droplevels()
+
+# Run MCA
+
+mca_res_platform_elongated <- MCA(platform_elongated, graph = FALSE, quali.sup = 1, method = "Burt")
+
+fviz_screeplot(mca_res_platform_elongated, addlabels = TRUE, ylim = c(0, 45))
+
+fviz_mca_var(mca_res_platform_elongated, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, invisible = "quali.sup",
+             ggtheme = theme_gray(), title = "")
+            
+             
+```
+
+
+# Variable contribution to MCA solution
+
+```{r}
+
+var_description_platform_elongated <- data.frame(
+  Dimension = c("Dimension 1", "Dimension 2"),
+  Variability = c("18.3%", "14.1%"),
+  Positive = c("Use of cortical platforms to extract products with low elongation with some cortex on dorsal surface",
+    "Use of cortical platforms to extract highly elongated blanks from cores with small amounts of cortex on the debitage surface"),
+  Negative = c("Use of plainplatforms to produce highly elongated blanks from completely decorticated debitage surfaces",
+  "Production of blanks with low elongation, from cores with some cortex surface and faceted platforms"
+))
+
+kable(var_description_platform_elongated)
+
+```
+
+
+```{r ANOVA_platform_elongated, echo=FALSE}
+
+# Prepare data for bootstraped ANOVA 
+
+mca <- as.data.frame(mca_res_platform_elongated$ind)
+context <- as.data.frame(platform_elongated$Context)
+
+mca <- mca %>%
+  dplyr::select(1:2)
+
+mca <- bind_cols(context, mca)
+
+mca <- mca %>%
+  mutate(context = `platform_elongated$Context`, "dim1" = coord.Dim.1, "dim2" = coord.Dim.2) %>%
+  dplyr::select(context, dim1, dim2)
+
+mca <- mca %>%
+  mutate(context = dplyr::recode(context, "PAP 5'25-6'25" = "PAP 5'25 6'25",
+                                 "PAP 4'75-5'25" = "PAP 4'75 5'25",
+                                 "PAP 4'00-4'75" = "PAP 4'00 4'75"))
+
+
+# Run bootstrap ANOVA
+boot_anova <- t1waybt(dim1 ~ context, data = mca, tr=.2, nboot=5000)
+
+# Multi-comparison bootstrap
+multi_comp <- mcppb20(dim1 ~ context, data = mca, tr=.2, nboot=5000)
+
+# Convert results to data frame
+multi_comp <- as.data.frame(multi_comp$comp)
+
+# Adjust p-values using FDR method
+#p.value.adjusted <- p.adjust(multi_comp[,6], "fdr")
+
+# Combine with data frame
+#multi_comp <- cbind(multi_comp, p.value.adjusted)
+
+# Add contexts names and transform to column "context"
+row.names(multi_comp) <- comparisons
+multi_comp <- rownames_to_column(multi_comp, "context")
+
+# Boxplot with representation of grouping calculated by multicomparison analysis
+
+# Build list with pairwise p-values
+LABELS <- setNames(multi_comp$`p-value`, multi_comp$context)
+
+# Attribute letters to each grouping based on alpha = .05
+grouping <- data.frame(multcompLetters(LABELS)['Letters'])
+grouping <- rownames_to_column(grouping, "context")
+
+# Colors for boxplot
+my_colors <- c( rgb(143,199,74,maxColorValue = 255),
+                rgb(242,104,34,maxColorValue = 255),
+                rgb(111,145,202,maxColorValue = 255),
+                rgb(254,188,18,maxColorValue = 255),
+                rgb(74,132,54,maxColorValue = 255),
+                rgb(236,33,39,maxColorValue = 255),
+                rgb(165,103,40,maxColorValue = 255))
+
+# Start boxplot
+DIM1_boxplot <- boxplot(mca$dim1 ~ mca$context , ylim=c(min(mca$dim1),
+                        1.1*max(mca$dim1)), col=my_colors[as.numeric(grouping[,2])],
+                        ylab="Dimension 1" , main="", outline = FALSE)
+# Location of labels
+over <- 0.1*max(DIM1_boxplot$stats[nrow(DIM1_boxplot$stats),] )
+
+# Superimpose labels
+text( c(1:nlevels(mca$contex)) , DIM1_boxplot$stats[nrow(DIM1_boxplot$stats),]+over , grouping[,2]  , col=my_colors[as.numeric(grouping[,2])] )
+
+
+```

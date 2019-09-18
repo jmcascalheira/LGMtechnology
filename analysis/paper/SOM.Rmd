@@ -2,7 +2,6 @@
 title: "SOM: Territoriality and the organization of technology during the Last Glacial Maximum in southwestern Europe"
 author:
   - João Cascalheira (ICArEHB, University of Algarve, Faro, Portugal) jmcascalheira@ualg.pt
-date: '`r Sys.Date()`'
 output: 
     bookdown::pdf_document2:
       toc: False
@@ -118,7 +117,7 @@ elongated_tidy$FlattFact <- binVariable(elongated_tidy$Flattening, bins = 2, met
 ```
 
 
-## S1 - Blank attribute frequency
+## S1 - Blanks attribute frequency
 
 ```{r blanks_cross_table, echo=FALSE}
 

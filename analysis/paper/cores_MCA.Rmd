@@ -1,0 +1,382 @@
+---
+title: "Elongated products"
+author: 
+  - name: João Cascalheira
+    email: jmcascalheira@ualg.pt
+    footnote: Corresponding author
+
+address: 
+  - code: ICArEHB
+    address: | 
+      FCHS, 
+      Universidade do Algarve,
+      Campus de Gambelas,
+      8005-139 Faro, Portugal 
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output: 
+    rmarkdown::html_document:
+        number_sections: yes
+        toc: yes
+   
+---
+
+```{r setup, include = FALSE, echo = FALSE}
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  comment = "#>"
+  )
+
+library(knitr)
+library(rmarkdown)
+library(git2r)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(tab)
+library(forcats)
+library(FactoMineR)
+library(factoextra)
+library(multcompView)
+library(RcmdrMisc)
+
+
+```
+
+
+```{r load_data, echo = FALSE}
+
+# Load data, calculate Elongation/Flattening for blanks and tidy data (including lumping categories with little (5%) representation into 'Other')
+
+cores <- read.csv("../data/raw_data/cores.csv")
+
+cores_tidy <- cores %>%
+  drop_na(Length, Width, Thickness, Weight) %>%
+  mutate(Elongation = Length / Width) %>%
+  mutate(Flattening = Width / Thickness) %>%
+  mutate(CoreSection = fct_lump(CoreSection, prop = 0.05)) %>%
+  mutate(PlatformType = fct_lump(PlatformType, prop = 0.05)) %>%
+  mutate(CortexLoc = fct_lump(CortexLoc, prop = 0.05)) %>%
+  mutate(CoreType = fct_lump(CoreType, prop = 0.05)) %>%
+  mutate(BlankType = fct_lump(BlankType, prop = 0.05)) %>%
+  mutate(Platforms = fct_lump(Platforms, prop = 0.05)) %>%
+  mutate(CortexPerc = dplyr::recode(CortexPerc, "75-95%" = "76-100%", "25-75%" ="26-75%", "100%" = "76-100%", "<25%" = "1-25%", ">95%" = "76-100%", "0%" = "0%")) %>%
+  mutate(ScarNumber = as.factor(ScarNumber)) %>%
+  mutate(ScarNumber = dplyr::recode(ScarNumber, "4" = "4 or more", "5" = "4 or more", "6" = "4 or more", "7" = "4 or more", "8" = "4 or more", "9" = "4 or more"))
+
+# Rename Context column
+colnames(cores_tidy)[1] <- "Context"
+
+# Bin continous variables
+cores_tidy$ElongFact <- binVariable(cores_tidy$Elongation, bins = 3, method = "natural", labels = c("low", "medium", "high"))
+cores_tidy$FlattFact <- binVariable(cores_tidy$Flattening, bins = 3, method = "natural", labels = c("low", "medium", "high"))
+cores_tidy$WeightFact <- binVariable(cores_tidy$Weight, bins = 3, method = "natural", labels = c("low", "medium", "high"))
+```
+
+
+```{r flake_cross_table, echo=FALSE}
+
+cores_table <- cores_tidy %>%
+  droplevels()
+
+# Set variables
+var_list <- c("CoreType", "Platforms", "CoreSection", "BlankType", "CortexPerc", "Weight",
+              "Elongation", "Flattening")
+
+# Get cross-tables by chronology using cross_tb() function
+cores_table <- tabmulti(cores_table, "Context", var_list,
+                 p.include = FALSE,
+                 n.headings = FALSE,
+                 means.text.label = "none",
+                 freq.text.label = "none")
+
+cores_table <- cores_table %>% 
+  as_tibble() %>% 
+  select(" " = Variable, `AMB II`, `AMB IV`, `AMB VI`, `PAP 4'00-4'75`, `PAP 4'75-5'25`, `PAP 5'25-6'25`, `VALM`, `VB A`, `VB B`, `VB C`, Total = Overall)
+
+kable(cores_table)
+
+
+```
+
+
+```{r MCA_cores, echo=FALSE}
+
+# Filter specific categories for MCA analysis
+cores <- cores_tidy %>%
+  select(Context, CortexPerc, CoreType, Platforms, ElongFact, FlattFact, BlankType, PlatformType) %>%
+  na.omit() %>%
+  droplevels()
+
+# Run MCA
+
+mca_res_cores <- MCA(cores, graph = FALSE, quali.sup = 1, method = "Burt")
+
+fviz_screeplot(mca_res_cores, addlabels = TRUE, ylim = c(0, 45))
+
+fviz_mca_var(mca_res_cores, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, invisible = "quali.sup",
+             ggtheme = theme_gray())
+             
+```
+
+
+# Variable contribution to MCA solution
+
+```{r}
+
+var_description <- data.frame(
+  Dimension = c("Dimension 1", "Dimension 2"),
+  Variability = c("23%", "13%"),
+  Positive = c("Simple cores with 2 isolated or multiple platforms. Low elongation and high flattening. Extraction of flakes with cortical platforms",
+    "Other types of cores with multiple platforms for mixed products"),
+  Negative = c("Prismatic cores with 2 opposed platforms. High elongation and low flattening, for elongated products",
+  "Simple cores with 1 platform and high % of cortex. Extraction of blades with cortical platforms"
+))
+
+kable(var_description)
+
+```
+
+
+
+
+```{r ANOVA_cores, echo=FALSE}
+
+## From script tukey_boxplot
+
+# Function below does not allow hyphen between categories
+
+mca <- as.data.frame(mca_res_cores$ind)
+context <- as.data.frame(cores_tidy$Context)
+
+mca <- mca %>%
+  select(1:2)
+
+mca <- bind_cols(context, mca)
+
+mca <- mca %>%
+  mutate(context = `cores_tidy$Context`, "dim1" = coord.Dim.1, "dim2" = coord.Dim.2) %>%
+  select(context, dim1, dim2)
+
+mca <- mca %>%
+  mutate(context = dplyr::recode(context, "PAP 5'25-6'25" = "PAP 5'25 6'25",
+                                 "PAP 4'75-5'25" = "PAP 4'75 5'25",
+                                 "PAP 4'00-4'75" = "PAP 4'00 4'75"))
+
+
+# DIMENSION 1
+
+model <- lm(mca$dim1 ~ mca$context)
+fit <- aov(model)
+TUKEY <- TukeyHSD(x=fit, 'mca$context', conf.level=0.95)
+
+generate_label_df <- function(TUKEY, variable){
+
+# Extract labels and factor levels from Tukey post-hoc
+Tukey.levels <- TUKEY[[variable]][,4]
+Tukey.labels <- data.frame(multcompLetters(Tukey.levels)['Letters'])
+
+# Put the labels in the same order as in the boxplot :
+Tukey.labels$context=rownames(Tukey.labels)
+Tukey.labels=Tukey.labels[order(Tukey.labels$context) , ]
+return(Tukey.labels)
+}
+
+LABELS <- generate_label_df(TUKEY , "mca$context")
+
+my_colors <- c( rgb(143,199,74,maxColorValue = 255),
+             rgb(242,104,34,maxColorValue = 255),
+             rgb(111,145,202,maxColorValue = 255),
+             rgb(254,188,18,maxColorValue = 255),
+             rgb(74,132,54,maxColorValue = 255),
+             rgb(236,33,39,maxColorValue = 255),
+             rgb(165,103,40,maxColorValue = 255))
+
+# Draw the basic boxplot
+DIM1_boxplot <- boxplot(mca$dim1 ~ mca$context , ylim=c(min(mca$dim1),
+                                          1.1*max(mca$dim1)),
+          col=my_colors[as.numeric(LABELS[,1])] , ylab="Dimesion 1" , main="", outline = FALSE)
+
+# I want to write the letter over each box. Over is how high I want to write it.
+over <- 0.1*max(DIM1_boxplot$stats[nrow(DIM1_boxplot$stats),] )
+
+#Add the labels
+text( c(1:nlevels(mca$contex)) , DIM1_boxplot$stats[nrow(DIM1_boxplot$stats),]+over , LABELS[,1]  , col=my_colors[as.numeric(LABELS[,1])] )
+
+
+# DIMENSION 2
+
+model <- lm(mca$dim2 ~ mca$context)
+fit <- aov(model)
+TUKEY <- TukeyHSD(x=fit, 'mca$context', conf.level=0.95)
+
+generate_label_df <- function(TUKEY, variable){
+
+# Extract labels and factor levels from Tukey post-hoc
+Tukey.levels <- TUKEY[[variable]][,4]
+Tukey.labels <- data.frame(multcompLetters(Tukey.levels)['Letters'])
+
+# Put the labels in the same order as in the boxplot
+  Tukey.labels$context=rownames(Tukey.labels)
+  Tukey.labels=Tukey.labels[order(Tukey.labels$context) , ]
+  return(Tukey.labels)
+}
+
+LABELS <- generate_label_df(TUKEY , "mca$context")
+
+my_colors <- c(rgb(143,199,74,maxColorValue = 255),
+             rgb(242,104,34,maxColorValue = 255),
+             rgb(111,145,202,maxColorValue = 255),
+             rgb(254,188,18,maxColorValue = 255),
+             rgb(74,132,54,maxColorValue = 255),
+             rgb(236,33,39,maxColorValue = 255),
+             rgb(165,103,40,maxColorValue = 255))
+
+# Draw the basic boxplot
+DIM2_boxplot <- boxplot(mca$dim2 ~ mca$context , ylim=c(min(mca$dim2),
+                                          1.1*max(mca$dim2)),
+          col=my_colors[as.numeric(LABELS[,1])] , ylab="Dimension 2" , main="", outline = FALSE)
+
+# Write the letter over each box. Over is how high I want to write it.
+over <- 0.1*max(DIM2_boxplot$stats[nrow(a$stats),] )
+
+# Add the labels
+text(c(1:nlevels(mca$contex)) , DIM2_boxplot$stats[nrow(DIM2_boxplot$stats),]+over , LABELS[,1]  , col = my_colors[as.numeric(LABELS[,1])])
+
+
+```
+
+
+```{r MCA_platform_flakes, echo=FALSE}
+
+# Filter specific categories for MCA analysis
+platform_flake <- flake_tidy %>%
+  select(Context, PlatformType, CortexPerc, ElongFact) %>%
+  na.omit() %>%
+  droplevels()
+
+# Run MCA
+
+mca_res_platform_flake <- MCA(platform_flake, graph = FALSE, quali.sup = 1, method = "Burt")
+
+fviz_screeplot(mca_res_platform_flake, addlabels = TRUE, ylim = c(0, 45))
+
+fviz_mca_var(mca_res_platform_flake, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE, invisible = "quali.sup",
+             ggtheme = theme_gray())
+             
+```
+
+
+```{r ANOVA_platform_elongated, echo=FALSE}
+
+## From script tukey_boxplot
+
+# Function below does not allow hyphen between categories
+
+mca <- as.data.frame(mca_res_platform_flake$ind)
+context <- as.data.frame(platform_flake$Context)
+
+mca <- mca %>%
+  select(1:2)
+
+mca <- bind_cols(context, mca)
+
+mca <- mca %>%
+  mutate(context = `platform_flake$Context`, "dim1" = coord.Dim.1, "dim2" = coord.Dim.2) %>%
+  select(context, dim1, dim2)
+
+mca <- mca %>%
+  mutate(context = dplyr::recode(context, "PAP 5'25-6'25" = "PAP 5'25 6'25",
+                                 "PAP 4'75-5'25" = "PAP 4'75 5'25",
+                                 "PAP 4'00-4'75" = "PAP 4'00 4'75"))
+
+
+# DIMENSION 1
+
+model <- lm(mca$dim1 ~ mca$context)
+fit <- aov(model)
+TUKEY <- TukeyHSD(x=fit, 'mca$context', conf.level=0.95)
+
+generate_label_df <- function(TUKEY, variable){
+
+# Extract labels and factor levels from Tukey post-hoc
+Tukey.levels <- TUKEY[[variable]][,4]
+Tukey.labels <- data.frame(multcompLetters(Tukey.levels)['Letters'])
+
+# Put the labels in the same order as in the boxplot :
+Tukey.labels$context=rownames(Tukey.labels)
+Tukey.labels=Tukey.labels[order(Tukey.labels$context) , ]
+return(Tukey.labels)
+}
+
+LABELS <- generate_label_df(TUKEY , "mca$context")
+
+my_colors <- c( rgb(143,199,74,maxColorValue = 255),
+             rgb(242,104,34,maxColorValue = 255),
+             rgb(111,145,202,maxColorValue = 255),
+             rgb(254,188,18,maxColorValue = 255),
+             rgb(74,132,54,maxColorValue = 255),
+             rgb(236,33,39,maxColorValue = 255),
+             rgb(165,103,40,maxColorValue = 255))
+
+# Draw the basic boxplot
+DIM1_boxplot <- boxplot(mca$dim1 ~ mca$context , ylim=c(min(mca$dim1),
+                                          1.1*max(mca$dim1)),
+          col=my_colors[as.numeric(LABELS[,1])] , ylab="Dimension 1" , main="", outline = FALSE)
+
+
+# I want to write the letter over each box. Over is how high I want to write it.
+over <- 0.1*max(DIM1_boxplot$stats[nrow(DIM1_boxplot$stats),])
+
+#Add the labels
+text(c(1:nlevels(mca$context)), DIM1_boxplot$stats[nrow(DIM1_boxplot$stats),] +
+       over, LABELS[,1] , col = my_colors[as.numeric(LABELS[,1])] )
+
+
+# DIMENSION 2
+
+model <- lm(mca$dim2 ~ mca$context)
+fit <- aov(model)
+TUKEY <- TukeyHSD(x=fit, 'mca$context', conf.level=0.95)
+
+generate_label_df <- function(TUKEY, variable){
+
+# Extract labels and factor levels from Tukey post-hoc
+Tukey.levels <- TUKEY[[variable]][,4]
+Tukey.labels <- data.frame(multcompLetters(Tukey.levels)['Letters'])
+
+# Put the labels in the same order as in the boxplot
+  Tukey.labels$context=rownames(Tukey.labels)
+  Tukey.labels=Tukey.labels[order(Tukey.labels$context) , ]
+  return(Tukey.labels)
+}
+
+LABELS <- generate_label_df(TUKEY , "mca$context")
+
+my_colors <- c(rgb(143,199,74,maxColorValue = 255),
+             rgb(242,104,34,maxColorValue = 255),
+             rgb(111,145,202,maxColorValue = 255),
+             rgb(254,188,18,maxColorValue = 255),
+             rgb(74,132,54,maxColorValue = 255),
+             rgb(236,33,39,maxColorValue = 255),
+             rgb(165,103,40,maxColorValue = 255))
+
+# Draw the basic boxplot
+DIM2_boxplot <- boxplot(mca$dim2 ~ mca$context , ylim=c(min(mca$dim2),
+                        1.1*max(mca$dim2)), col=my_colors[as.numeric(LABELS[,1])],                         ylab="Dimension 2", main="", outline = FALSE)
+
+# Write the letter over each box. Over is how high I want to write it.
+over <- 0.1*max( DIM2_boxplot$stats[nrow(a$stats),] )
+
+# Add the labels
+text(c(1:nlevels(mca$contex)) , DIM2_boxplot$stats[nrow(DIM2_boxplot$stats),]+over , LABELS[,1]  , col = my_colors[as.numeric(LABELS[,1])])
+
+```

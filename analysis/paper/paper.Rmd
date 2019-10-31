@@ -18,7 +18,7 @@ csl: plos-one.csl
 \n
 
 # Abstract
-Climate changes that occurred during the Last Glacial Maximum (LGM) had significant consequences in human eco-dynamics across Europe. Among the most striking impacts are the demographic contraction of modern humans into southern refugia and the potential formation of a population bottleneck. In Iberia and southern France transformations also included the occurrence of significant technological changes, mostly marked by the emergence of a diverse set of bifacially-shaped stone projectiles. The rapid dissemination of bifacial technologies and the geographical circumscription of specific projectile morphologies within these regions have been regarded as evidence for: (1) the existence of a system of long-distance exchange and social alliance networks; (2) the organization of human groups into cultural facies with well-defined stylistic territorial boundaries. However, the degree and modes in which cultural transmission have occurred within these territories, and how it may have influenced other domains of the adaptive systems, remains largely unknown. Using southern Iberia as a case-study, this paper presents the first quantitative approach to the organization of lithic technology and its relationship to hunter-gatherers' territorial organization during the LGM. Similarities and dissimilarities in the presence of metric and morphological data describing lithic technologies are used as a proxy to explore modes and degrees of cultural transmission. Statistical results show that similarities in technological options are dependent on the chronology and geographical distance between sites and corroborate previous arguments for the organization of LGM settlement in Southern Iberia into discrete eco-cultural facies.
+Climate changes that occurred during the Last Glacial Maximum (LGM) had significant consequences in human eco-dynamics across Europe. Among the most striking impacts are the demographic contraction of modern humans into southern refugia and the potential formation of a population bottleneck. In Iberia and southern France transformations also included the occurrence of significant technological changes, mostly marked by the emergence of a diverse set of bifacially-shaped stone projectiles. The rapid dissemination of bifacial technologies and the geographical circumscription of specific projectile morphologies within these regions have been regarded as evidence for: (1) the existence of a system of long-distance exchange and social alliance networks; (2) the organization of human groups into cultural facies with well-defined stylistic territorial boundaries. However, the degree and modes in which cultural transmission have occurred within these territories, and how it may have influenced other domains of the adaptive systems, remains largely unknown. Using southern Iberia as a case-study, this paper presents the first quantitative approach to the organization of lithic technology and its relationship to hunter-gatherers' territorial organization during the LGM. Similarities and dissimilarities in the presence of morphological and metrics data describing lithic technologies are used as a proxy to explore modes and degrees of cultural transmission. Statistical results show that similarities in technological options are dependent on the chronology and geographical distance between sites and corroborate previous arguments for the organization of LGM settlement in Southern Iberia into discrete eco-cultural facies.
 
 \n
 
@@ -180,7 +180,7 @@ elongated_tidy$FlattFact <- binVariable(elongated_tidy$Flattening, bins = 2, met
 
 Centered around c. 21 ka cal BP, the Last Glacial Maximum (LGM) was a global climate event characterized by the maximum expansion of the ice sheet over Scandinavia and northern Europe, along with generally cold and arid conditions in central and western Europe [@clark_last_2009; @hughes_timing_2013; @mix_environmental_2001].
 
-Climatic changes occurred during this period had substantial repercussions in the geography, technology, and social behavior of human populations in Europe. Among the most drastic impacts are: (1) the contraction of the human range to southern regions of Europe that served as refugia, such as the Iberian and the Italian peninsulas [@banks_human_2008; @bocquet-appel_population_2000; @bradtmoller_repeated_2012; @burke_exploring_2014; @derrico_neandertal_2003; @jochim_late_1987; @straus_riera_1986; @straus_southwestern_1991]; (2) the consequent genesis of a bottleneck scenario in human genetic diversity [@barbujani_evidence_1998; @keinan_measurement_2007; @torroni_signal_2001]; (3) and, in southwestern Europe, the advent of a set of new technologies for the manufacture of lithic projectiles and knives using bifacial retouch.
+Climatic changes occurred during this period had substantial repercussions in the geography, technology, and social behavior of human populations in Europe. Among the most drastic impacts are: (1) the contraction of the human range to southern regions of Europe that served as refugia, such as the Iberian and the Italian peninsulas [@banksHumanEcologicalNiches2008; @bocquet-appel_population_2000; @bradtmollerRepeatedReplacementModel2012; @burke_exploring_2014; @derricoNeandertalExtinctionMillennial2003; @jochimLatePleistoceneRefugia1987; @straus_riera_1986; @straus_southwestern_1991]; (2) the consequent genesis of a bottleneck scenario in human genetic diversity [@barbujani_evidence_1998; @keinan_measurement_2007; @torroni_signal_2001]; (3) and, in southwestern Europe, the advent of a set of new technologies for the manufacture of lithic projectiles and knives using bifacial retouch.
 
 This latter feature is one of the main elements traditionally used to define the so-called Solutrean techno-complex [@smith_solutreen_1966]. The Solutrean is a phenomenon geographically limited to southwestern France and the Iberian Peninsula, presenting a moderately short chronological range (c. 25–19 ka cal BP) when compared to other pan-European techno-complexes and representing, to a certain extent, an outlier within the common background persisting throughout the Upper Paleolithic in western Europe.
 
@@ -205,7 +205,7 @@ In Iberia, four cultural facies are distinguished based on the distribution of b
 
 \n
 
-```{r lgmmap, echo=FALSE, fig.cap = "Top - Geographical distribution of the cultural facies (A- Cantabrian, B- Portuguese, C- Mediterranean, D-Catalan) defined for the LGM in Iberia. Bottom -  location of LGM sites in the southern part of the Peninsula, sites used in this study are marked with a star."}
+```{r lgmmap, echo=FALSE, fig.cap = "Top - Geographical distribution of the cultural facies (A- Cantabrian, B- Portuguese, C- Mediterranean, D-Catalan) defined for the LGM in Iberia. Bottom -  location of LGM sites in the southern part of the Peninsula, sites used in this study are marked with a star. Topographic data from the U.S. Geological, Survey Shuttle Radar Topography Mission (https://earthexplorer.usgs.gov/)."}
 
 knitr::include_graphics("../figures/map_solutrean.tif")
 
@@ -215,7 +215,7 @@ knitr::include_graphics("../figures/map_solutrean.tif")
 
 In chronological terms, according to the traditional models [e.g.,  @jorda_solutrense_1955; @munoz_ibanez_puntas_2000; @tiffagom_pierre_2006; @zilhao_o_1997; @zilhao_seeing_2013; @zilhao_sequence_1994], backed shouldered projectiles and stemmed and winged points are only characteristic of the later phases of the Solutrean techno-complex (i.e., Upper Solutrean and Solutreo-Gravettian). However, this interpretation has been questioned in a recent Bayesian analysis of the currently available radiocarbon data [@cascalheira_chronological_2015], calling into doubt the status of those type-fossils as precise temporal markers, and confirming their presence throughout most of the LGM time-span (i.e., c. 25-19 ka cal BP).
 
-LGM settlement of southern Iberia is marked by the existence of more or less dense clusters of sites, that are relatively isolated from one another by geographical hiatus where the complete absence or the presence of very few sites might testify human passage but not likely intensive occupation [@aura_cueva_2009; @cascalheira_vale_2012]. Caves and rock-shelters are better represented than open-air locations, as are multi-component sites over single horizon ones [@cascalheira_chronological_2015; @cascalheira_influencia_2013]. There is evidence for the existence of different types of sites, including long-term and seasonal residential camps, shorter specialized occupations, lithic cache sites, and possible aggregation sites [sensu @conkey_identification_1980]. The number of occupied sites is significantly higher than during the early Upper Paleolithic and, although they tend to be in coastal or near-coastal settings, inland camps are also represented, mainly as single-occupation localities [@schmidt_rapid_2012; @straus_upper_2000].
+LGM settlement of southern Iberia is marked by the existence of more or less dense clusters of sites, that are relatively isolated from one another by geographical hiatus where the complete absence or the presence of very few sites might testify human passage but not likely intensive occupation [@aura_cueva_2009; @cascalheira_vale_2012]. Caves and rock-shelters are better represented than open-air locations, as are multi-component sites over single horizon ones [@cascalheira_chronological_2015; @cascalheira_influencia_2013]. There is evidence for the existence of different types of sites, including long-term and seasonal residential camps, shorter specialized occupations, lithic cache sites, and possible aggregation sites [sensu @conkey_identification_1980]. The number of occupied sites is significantly higher than during the early Upper Paleolithic and, although they tend to be in coastal or near-coastal settings, inland camps are also represented, mainly as single-occupation localities [@schmidtRapidClimateChange2012; @straus_upper_2000].
 
 Rather problematic is the quality of the available data from most of these sites. More than half of the occurrences are surface or mixed contexts, suffering from several limitations (e.g., lack of organic materials, presence of small and/or highly truncated lithic assemblages, and occurrence of thick palimpsest deposits - [@aubry_analyse_2013; @cascalheira_chronological_2015; @cascalheira_influencia_2013; @cascalheira_o_2013; @zilhao_seeing_2013]).
 
@@ -233,15 +233,15 @@ In sum, paleoanthropological models for LGM hunter-gatherer adaptations in south
 
 # Theoretical framework for cultural transmission processes
 
-The diffusion of specific concepts across southern Iberia, as rapidly as it seems to have occurred during the LGM, may have resulted from an array of very diverse contact behaviors. Ethnoarchaeological data [@wiessner_reconsidering_1984; @wiessner_risk_1982; @wiessner_style_1983] has demonstrated that the process of social interaction between hunter-gatherer communities can vary between episodes in which people have little contact to each other’s domestic space (with gatherings occurring at the edge of their respective ranges), to events in which marriage partners are exchanged, and previously foreign individuals become fixtures in each other’s residential lives [@tostevin_seeing_2013; @tostevin_social_2007]. Contacts occurring anywhere between these two extremes of the contact scale result in dissimilar access to information, and to different types of information.
+The diffusion of specific concepts across southern Iberia, as rapidly as it seems to have occurred during the LGM, may have resulted from an array of very diverse contact behaviors. Ethnoarchaeological data [@wiessner_reconsidering_1984; @wiessner_risk_1982; @wiessner_style_1983] has demonstrated that the process of social interaction between hunter-gatherer communities can vary between episodes in which people have little contact to each other’s domestic space (with gatherings occurring at the edge of their respective ranges), to events in which marriage partners are exchanged, and previously foreign individuals become fixtures in each other’s residential lives [@tostevin_seeing_2013; @tostevinSocialIntimacyArtefact2007]. Contacts occurring anywhere between these two extremes of the contact scale result in dissimilar access to information, and to different types of information.
 
 In the case of LGM projectiles and remaining shared concepts, both hypotheses are viable to have occurred. The design concepts of shouldered and stemmed and winged projectile points may have been disseminated in intimate cultural environments with access to the full production sequences, or it may, on the contrary, be the outcome of independent innovation by exposure to curated tools and not necessarily to the complete technological mechanisms. Within this latter scenario, although it is possible that an individual could independently develop some of the behaviors of point production from examining a finished tool, it is rather unlikely that he/she would use the same procedures, techniques, and methods, during the knapping process. Thus, understanding the complete production process is of great importance to distinguish between modes but mostly degrees of social contact, and how these vary across time. Focusing exclusively on information coming from projectiles morphologies, as well as on any other class of traditionally considered style-embedded items (i.e., portable art, ornaments, lithic retouched tools), will only allow to explore the patterns of presence/absence of contacts and not the possible nature of those contacts. Further, using LGM bifacial reduction sequences and projectile manufacture in southern Iberia to shed light on the technological processes is a somehow hampered task. Patterns of segregation of the production sequence, which comprise shaping of preforms at sites close to rich raw material sources on the one hand, and export of preforms and finished points to other locations on the other hand [@schmidt_solutrean_2015; @tiffagom_pierre_2006], can severely truncate the variability of technological procedures. Since, however, the available information on point production attests, in a large number of cases, that bifacial points were obtained from blanks produced within non-bifacial reduction sequences [@cascalheira_tecnologia_2010; @tiffagom_solutrense_2005; @zilhao_o_1997], a reasonable approach is to look at the non-bifacial technology of the assemblages and check for patterns of similarity/dissimilarity in the distribution of specific methods and concepts within the reduction sequence continuum.
 
-Such kind of analysis requires, however, a theoretical and methodological framework that would allow the integration of both social interactions and ecological background as shapers of stone knapping patterns across space and time. While there are many ethnoarchaeological and theory-based studies addressing the meaning of morphological variations of lithic tools as indicators of style and territorial differentiation, very few attempts have been made to use technological processes as proxies for cultural transmission processes. The middle-range theory presented by Tostevin [-@tostevin_seeing_2013; -@tostevin_social_2007], for studying the material evidence of social contact between Neanderthals and Anatomically Modern Humans using lithic technology, is perhaps one of the most compelling and sophisticated approaches. Based on a body of literature on artefact style [@jochim_building_1995; @jochim_unified_1995; @lechtman_style_1975; @sackett_style_1990; @wiessner_reconsidering_1984; @wiessner_seeking_1997], optimization studies [@bird_behavioral_2006; @boyd_culture_1985; @broughton_evolutionary_1999; @kuhn_evolutionary_2004] and experimental knapping [@dibble_new_1981; @pelcin_effect_1997; @pelcin_effect_1997-1; @pelcin_formation_1997], Tostevin’s model seeks to identify whether variation in lithic material culture style reflects one or more social processes, once other sources of variability have been dismissed.
+Such kind of analysis requires, however, a theoretical and methodological framework that would allow the integration of both social interactions and ecological background as shapers of stone knapping patterns across space and time. While there are many ethnoarchaeological and theory-based studies addressing the meaning of morphological variations of lithic tools as indicators of style and territorial differentiation, very few attempts have been made to use technological processes as proxies for cultural transmission processes. The middle-range theory presented by Tostevin [-@tostevin_seeing_2013; -@tostevinSocialIntimacyArtefact2007], for studying the material evidence of social contact between Neanderthals and Anatomically Modern Humans using lithic technology, is perhaps one of the most compelling and sophisticated approaches. Based on a body of literature on artefact style [@jochim_building_1995; @jochim_unified_1995; @lechtman_style_1975; @sackett_style_1990; @wiessner_reconsidering_1984; @wiessner_seeking_1997], optimization studies [@bird_behavioral_2006; @boyd_culture_1985; @broughton_evolutionary_1999; @kuhn_evolutionary_2004] and experimental knapping [@dibble_new_1981; @pelcin_effect_1997; @pelcin_effect_1997-1; @pelcin_formation_1997], Tostevin’s model seeks to identify whether variation in lithic material culture style reflects one or more social processes, once other sources of variability have been dismissed.
 
 The present paper adopts the same body of theory to inform a technology-based approach (see methods below).
 
-Ethnography has shown that technological gestures are not just individual action sequences with clearly defined goals, but suites of distributed behaviors reflecting complex systems that have been learned and assimilated as bodily techniques. In this context, flintknapping processes are considered “technological performances which can only be effectively taught and learned by observation of the body movements, the handling of core and percussor, and the flake by flake strategizing on how to exploit core volumes” [@tostevin_social_2007, pp. 344]. Lithic reduction is a directional and irreversible process characterized by a sequence of mechanical relationships. While these relationships are influenced by multiple contextual, aspects, such as the quality of the available raw material, identifying different exploitation patterns within these mechanical relationships are thought to reflect a purposeful choice of particular modes of technological manipulation present in an assemblage out of an equifinal pool of alternative possibilities - what Sackett [-@sackett_approaches_1982; -@sackett_style_1986; -@sackett_style_1990] have called isochrestic variation .
+Ethnography has shown that technological gestures are not just individual action sequences with clearly defined goals, but suites of distributed behaviors reflecting complex systems that have been learned and assimilated as bodily techniques. In this context, flintknapping processes are considered “technological performances which can only be effectively taught and learned by observation of the body movements, the handling of core and percussor, and the flake by flake strategizing on how to exploit core volumes” [@tostevinSocialIntimacyArtefact2007, pp. 344]. Lithic reduction is a directional and irreversible process characterized by a sequence of mechanical relationships. While these relationships are influenced by multiple contextual, aspects, such as the quality of the available raw material, identifying different exploitation patterns within these mechanical relationships are thought to reflect a purposeful choice of particular modes of technological manipulation present in an assemblage out of an equifinal pool of alternative possibilities - what Sackett [-@sackett_approaches_1982; -@sackett_style_1986; -@sackett_style_1990] have called isochrestic variation .
 
 Based on this theoretical approach, it is assumed here that the characterization and comparison of the central tendencies of lithic attributes distribution within specific and comparable clusters of technological decisions can be used as indicators of behavior differentiation. In this way it is possible to assess how knappers responsible for different assemblages solve problems, react to different circumstances and produce artifacts according to specific learned methods, resulting in the variability detected among assemblages. It is also assumed, thus, that technological and technical choices, whether conscious or not, taken by knappers are integral components of cultural life and are “largely dictated by the technological traditions within which they have been enculturated as members of the social groups that delineate their ethnicity”  [@sackett_style_1990, pp. 33]. The same choices can though be subject to revision as a result of changes in the patterns of social interaction between groups.
 
@@ -259,7 +259,7 @@ expectations_table <- data.frame(
   Expectations = c("Assemblages recurrently show no statistical significant differences under a range of different measures", "Assemblages recurrently show statistical significant differences under a range of different measures"),
   Caveats = c("Equifinality and restricted options within the technological processes", "Functional organization; Ecological limitations (e.g. raw material constraints); Chronological differences"))
 
-knitr::kable(expectations_table, caption = "Model expectations for different degrees of cultural transmission during the LGM in southern Iberia based on technological analysis of lithic attributes.")
+knitr::kable(expectations_table, caption = "Model expectations for different degrees of cultural transmission during the LGM in southern Iberia, based on technological analysis of lithic attributes.")
 
 ```
 
@@ -305,11 +305,11 @@ Further, all four chosen sites are located near raw material sources, and thus a
 
 Complete cores and blanks were analyzed using a set of technological variables and attributes, specifically chosen to allow the isolation of separate sources of variability, including raw material constraints and learned behaviors (see Supplementary Online Material [SOM] Tables S1 and S2 for a complete list of attributes and measurement techniques).
 
-Following the theoretical background of Tostevin [-@tostevin_seeing_2013; -@tostevin_social_2007], Scerri [-@scerriAterianItsPlace2013] and Scerri et al. [-@scerri_unexpected_2014], in this study variables were organized into comparable heuristic domains (i.e. Platform Maintenance, Core Exploitation, Dorsal Convexities Management, Elongated blanks Production, Core Morphology, and Core Use) of the technological sequences, to achieve a comprehensive structure of similarity and dissimilarity between assemblages. The main goal of using these domains was to isolate different sources of variability by focusing on specific sets of interrelated variables that correspond to interdependent knapping actions. Breaking down the reduction sequences into comparable clusters makes possible to account for possible biased samples and “broken” sequences, not assuming that the knapping process was restricted to a specific timeframe, or the work of a single individual [@scerri_unexpected_2014].
+Following the theoretical background of Tostevin [-@tostevin_seeing_2013; -@tostevinSocialIntimacyArtefact2007], Scerri [-@scerriAterianItsPlace2013] and Scerri et al. [-@scerri_unexpected_2014], in this study variables were organized into comparable heuristic domains (i.e. Platform Maintenance, Core Exploitation, Dorsal Convexities Management, Elongated blanks Production, Core Morphology, and Core Use) of the technological sequences, to achieve a comprehensive structure of similarity and dissimilarity between assemblages. The main goal of using these domains was to isolate different sources of variability by focusing on specific sets of interrelated variables that correspond to interdependent knapping actions. Breaking down the reduction sequences into comparable clusters makes possible to account for possible biased samples and “broken” sequences, not assuming that the knapping process was restricted to a specific timeframe, or the work of a single individual [@scerri_unexpected_2014].
 
 The chosen variables, and respective combinations, were based on the traditional parameters used in lithics attribute analysis [see e.g., @andrefsky_jr_lithics_2005; @inizan_technology_1999] and the results of experimental studies available in the literature [see e.g., @cotterell_formation_1987; @dibble_effect_1995; @dibble_introducing_2009; @dibble_new_1981; @pelcin_effect_1997; @pelcin_effect_1997-1; @pelcin_formation_1997; @pelcin_threshold_1998; @rezek_relative_2011]. For example, controlled knapping experiments show that blank dimensions and shape are significantly affected by variations in exterior platform angles, platform depths and platform preparation (e.g., faceting) [@dibble_introducing_2009; @rezek_two_2018-2]. Thus, by considering variables such as platform type and blank elongation (length/width ratio) as a set of interrelated variables, the way knappers differently exploited these variables can be assessed and compared across assemblages. The same is true for other domains, such as the exploitation of dorsal surface convexities or the management of core morphology, all with direct impact on blank morphometrics.
 
-A multivariate statistical approach was used to explore the interaction of variables within each domain. Since most of the attributes available were categorical, a Multiple Correspondence Analysis (MCA) was used to explore the orthogonal dimensions of variability in the data. MCA is well suited to lithic analysis because it allows the isolation of the different sources of variability contributing to the character of each assemblage under study. When used, metric variables were pooled into categories using a K-means clustering algorithm. To reduce the amount of ‘noise’ in the overall variability, all categorical attributes whose representation was less than 5% within each variable were also lumped together into a category named ‘Other’, before any of the analysis were performed.
+A multivariate statistical approach was used to explore the interaction of variables within each domain. Since most of the attributes available were categorical, a Multiple Correspondence Analysis (MCA) was used to explore the orthogonal dimensions of variability in the data. MCA is well suited to lithic analysis because it allows the isolation of the different sources of variability influencing the character of each assemblage under study. When used, metric variables were pooled into categories using a K-means clustering algorithm. To reduce the amount of ‘noise’ in the overall variability, all categorical attributes whose representation was less than 5% within each variable were also lumped together into a category named ‘Other’, before any of the analysis were performed.
 
 Following Scerri et al. [-@scerri_unexpected_2014] the scores and loadings of the most relevant dimensions calculated by the MCA were used to identify and explore the relative contributions of aspects such as reduction intensity, raw material constraints, or particular knapping styles. To analyze the main sources of variability behind the technological character of each assemblage separately, and to assess the similarities and differences between contexts, the individual scores of each relevant component of the MCA were statistically tested by applying an analysis of variance (ANOVA). ANOVA tests and corresponding post hoc comparisons were run using a percentile t bootstrapped approach for trimmed means (trim level was set at 20%) as implemented by Mair and Wilcox [-@mair_robust_2016]. This approach intended to prevent problems related to heavy-tailed distributions, unequal sample sizes, and possible differences in skewness distributions of the samples. The location of individuals, grouped by assemblages in the multivariate dimensions, was bootstrapped 5000 times in all tests.
 
@@ -354,7 +354,7 @@ cortex_ratio <- blanks_tidy %>%
 
 total_blanks <- left_join(cores_prop, blanks_prop) %>% 
   left_join(., cortex_ratio) %>% 
-  mutate(`Blank to Core ratio` = Blanks / Cores) %>% 
+  mutate(`Blanks / Cores ratio` = Blanks / Cores) %>% 
   mutate(`Total artifacts` = Cores + Blanks)
   
 
@@ -370,7 +370,7 @@ As it is shown in Figure \@ref(fig:histogram), however, the reduction sequences 
 
 \n
 
-```{r histogram, echo = FALSE, fig.cap = "Width histograms for the elongated products from each context included in this study."}
+```{r histogram, echo = FALSE, fig.cap = "Width histograms for the elongated products of each context included in this study."}
 
 ### Plot width histograms for elongated products
 
@@ -381,7 +381,9 @@ ggplot(bladelets, aes(Width)) +
   geom_histogram(aes(y = ..density..), color = "grey", fill = "grey") +
   geom_density() +
   facet_wrap(~Context, ncol = 2) +
-  scale_y_continuous(labels = scales::percent)
+  scale_y_continuous(labels = scales::percent) +
+  theme(axis.title.y = element_blank()) +
+  labs(x = "Width (mm)")
 
 ```
 
@@ -391,7 +393,7 @@ In what regards to relative flaking intensities, there are some relevant differe
 
 \n
 
-```{r intensity, echo = FALSE, fig.cap = "Density plots comparing the lengths of dominant blank scars on cores (yellow), blanks (blue) and fully cortical blanks (magenta). Following Henry [-@henry_correlations_1989] the plots show the relative flaking intensity between the assemblages. For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article."}
+```{r intensity, echo = FALSE, fig.cap = "Density plots comparing the lengths of dominant blank scars on cores, blanks and fully cortical (primary) blanks. Following Henry [-@henry_correlations_1989] the plots show the relative flaking intensity for each assemblage."}
 
 core_length <- cores_tidy %>% 
   select(Context, ScarLength)
@@ -404,12 +406,16 @@ primary_blanks_length <- blanks_tidy %>%
   filter(CortexPerc %in% c("26-75%", "76-100%")) %>%
   select(Context, Length)
 
+cols <- c("Cores" = "#E69F00", "Blanks" = "#56B4E9", "Primary Blanks" = "#ff2d2d")
+
 ggplot() + 
-  geom_density(data = core_length, aes(x=ScarLength), fill = "#E69F00", color = "black", alpha = 0.7) +
-  geom_density(data = blank_length, aes(x=Length), fill = "#56B4E9", color = "black", alpha = 0.7) +
-  geom_density(data = primary_blanks_length, aes(x=Length), fill = "#ff2d2d", color = "black", alpha = 0.5) +
+  geom_density(data = core_length, aes(x=ScarLength, fill = "Cores"), color = "black", alpha = 0.7) +
+  geom_density(data = blank_length, aes(x=Length, fill = "Blanks"), color = "black", alpha = 0.7) +
+  geom_density(data = primary_blanks_length, aes(x=Length, fill = "Primary Blanks"), color = "black", alpha = 0.5) +
+  scale_fill_manual(name=NULL,values=cols)  +
   facet_wrap(~Context, ncol = 2) +
   labs(x = "Length (mm)")
+
 
 ```
 
@@ -462,7 +468,7 @@ The bootstrapped ANOVA multiple comparison results for both dimensions of the MC
 
 \n
 
-```{r MCAplatformmaintenance, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot for Platform Maintenance. For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article."}
+```{r MCAplatformmaintenance, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot (first two dimensions) for Platform Maintenance. The color ramp represents the contribution (in %) of the variable categories to the definition of the dimensions."}
 
 # Filter specific categories for MCA analysis
 platform_maintenance <- blanks_tidy %>%
@@ -476,7 +482,7 @@ mca_res_platform_maintenance <- MCA(platform_maintenance, graph = FALSE, quali.s
 #fviz_screeplot(mca_res_platform_maintenance, addlabels = TRUE, ylim = c(0, 45))
 
 
-fviz_mca_var(mca_res_platform_maintenance, labelsize = 3, col.var = "contrib",
+fviz_mca_var(mca_res_platform_maintenance, labelsize = 5, col.var = "contrib",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE, invisible = "quali.sup",
              ggtheme = theme_gray(), title = "") +
@@ -488,7 +494,7 @@ fviz_mca_var(mca_res_platform_maintenance, labelsize = 3, col.var = "contrib",
 
 \n
 
-```{r ANOVAplatformmaintenance, echo=FALSE, fig.cap = "Platform Maintenance multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference."}
+```{r ANOVAplatformmaintenance, echo=FALSE, fig.cap = "Platform Maintenance multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference (p-value ≥ 0.05)."}
 
 
 ######################
@@ -601,7 +607,7 @@ Figure \@ref(fig:ANOVAcoreexploitation) presents the results of the multi-compar
 
 \n
 
-```{r MCAcoreexploitation, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot for Core Exploitation. For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article."}
+```{r MCAcoreexploitation, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot (first two dimensions) for Core Exploitation. The color ramp represents the contribution (in %) of the variable categories to the definition of the dimensions."}
 
 # Filter specific categories for MCA analysis
 core_exploitation <- blanks_tidy %>%
@@ -617,7 +623,7 @@ mca_res_core_exploitation <- MCA(core_exploitation, graph = FALSE, quali.sup = 1
 
 #fviz_screeplot(mca_res_core_exploitation, addlabels = TRUE, ylim = c(0, 45))
 
-fviz_mca_var(mca_res_core_exploitation, labelsize = 3, col.var = "contrib",
+fviz_mca_var(mca_res_core_exploitation, labelsize = 5, col.var = "contrib",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE, invisible = "quali.sup",
              ggtheme = theme_gray(), title = "") +
@@ -629,7 +635,7 @@ fviz_mca_var(mca_res_core_exploitation, labelsize = 3, col.var = "contrib",
 
 \n
 
-```{r ANOVAcoreexploitation, echo=FALSE, fig.cap = "Core Exploitation multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference."}
+```{r ANOVAcoreexploitation, echo=FALSE, fig.cap = "Core Exploitation multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference (p-value ≥ 0.05)."}
 
 
 ######################
@@ -734,7 +740,7 @@ grid.arrange(dim1, dim2, ncol = 1)
 
 ### Dorsal Surface Convexity
 
-The influence of flaking surface convexities in the overall morpho-metrics of a blank has been demonstrated by sereval authors [see e.g., @macgregor_abrupt_2005; @pelcin_controlled_1996; @tostevin_social_2007]. In short, the ridge pattern of the dorsal surface of flakes determines the path of the resulting flake because the ridges guide the force of the percussor blow. Changes in the shape of the debitage surface morphology affect the dimensions of the resulting blanks by changing the distribution of mass over the said blank. In this analytical domain, a set of variables related to shape, including Elongation and Flattening ratios, Cross-section, Edge shape, and Profile are examined for all blanks. The aim of this approach is to assess patterns of blank morphological variation of each context under study, to evaluate possible differences/similiarities on how knappers controlled surface convexities during core exploitation.
+The influence of flaking surface convexities in the overall morpho-metrics of a blank has been demonstrated by sereval authors [see e.g., @macgregor_abrupt_2005; @pelcin_controlled_1996; @tostevinSocialIntimacyArtefact2007]. In short, the ridge pattern of the dorsal surface of flakes determines the path of the resulting flake because the ridges guide the force of the percussor blow. Changes in the shape of the debitage surface morphology affect the dimensions of the resulting blanks by changing the distribution of mass over the said blank. In this analytical domain, a set of variables related to shape, including Elongation and Flattening ratios, Cross-section, Edge shape, and Profile are examined for all blanks. The aim of this approach is to assess patterns of blank morphological variation of each context under study, to evaluate possible differences/similiarities on how knappers controlled surface convexities during core exploitation.
 
 Figure \@ref(fig:MCAconvexity) present the results of the MCA applied to these set of variables. Close to 32% of the overall variability is explained by the first two dimensions. Dimension 1 (22.2%) opposes blanks with high flattening and low elongation ratios and irregular or lenticular cross-sections, to highly elongated blanks with parallel edges and trapezoidal cross-sections. Dimension 2, on the other hand, is marked by significant positive loadings for irregular edge shapes, profiles and cross-sections, and negative loadings for high flattening ratios and lenticular cross-sections.
 
@@ -742,7 +748,7 @@ The distribution of mean values from each context across the two first dimension
 
 \n
 
-```{r MCAconvexity, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot for Dorsal Surface Convexity. For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article."}
+```{r MCAconvexity, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot (first two dimensions) for Dorsal Surface Convexity. The color ramp represents the contribution (in %) of the variable categories to the definition of the dimensions."}
 
 # Filter specific categories for MCA analysis
 dorsal_convexity <- blanks_tidy %>%
@@ -755,7 +761,7 @@ mca_res_dorsal_convexity <- MCA(dorsal_convexity, graph = FALSE, quali.sup = 1, 
 
 #fviz_screeplot(mca_res_dorsal_convexity, addlabels = TRUE, ylim = c(0, 45))
 
-fviz_mca_var(mca_res_dorsal_convexity, labelsize = 3, col.var = "contrib",
+fviz_mca_var(mca_res_dorsal_convexity, labelsize = 5, col.var = "contrib",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE, invisible = "quali.sup",
              ggtheme = theme_gray(), title = "") +
@@ -767,7 +773,7 @@ fviz_mca_var(mca_res_dorsal_convexity, labelsize = 3, col.var = "contrib",
 
 \n
 
-```{r ANOVAconvexity, echo=FALSE, fig.cap = "Dorsal Convexity multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference."}
+```{r ANOVAconvexity, echo=FALSE, fig.cap = "Dorsal Convexity multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference (p-value ≥ 0.05)."}
 
 
 ######################
@@ -881,7 +887,7 @@ In Dimension 2 (11.2%), the occurrence of twisted blades and bladelets do not se
 
 \n
 
-```{r MCAelongated, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot for Elongated Products. For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article."}
+```{r MCAelongated, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot (first two dimensions) for Elongated Products. The color ramp represents the contribution (in %) of the variable categories to the definition of the dimensions"}
 
 # Filter specific categories for MCA analysis
 elongated <- elongated_tidy %>%
@@ -896,7 +902,7 @@ mca_res_elongated <- MCA(elongated, graph = FALSE, quali.sup = 1, method = "Burt
 
 #fviz_screeplot(mca_res_elongated, addlabels = TRUE, ylim = c(0, 45))
 
-fviz_mca_var(mca_res_elongated, labelsize = 3, col.var = "contrib",
+fviz_mca_var(mca_res_elongated, labelsize = 5, col.var = "contrib",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE, invisible = "quali.sup",
              ggtheme = theme_gray(), title = "") +
@@ -908,7 +914,7 @@ fviz_mca_var(mca_res_elongated, labelsize = 3, col.var = "contrib",
 
 \n
 
-```{r ANOVAelongated, echo=FALSE, fig.cap = "Elongated Products multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference."}
+```{r ANOVAelongated, echo=FALSE, fig.cap = "Elongated Products multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference (p-value ≥ 0.05)."}
 
 
 ######################
@@ -1026,7 +1032,7 @@ Although representing 17.6% of the variability, Dimension 2 is much less informa
 
 \n
 
-```{r MCAcoremorphology, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot for Core Morphology. For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article."}
+```{r MCAcoremorphology, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot (first two dimensions) for Core Morphology. The color ramp represents the contribution (in %) of the variable categories to the definition of the dimensions"}
 
 # Filter specific categories for MCA analysis
 cores_morph <- cores_tidy %>%
@@ -1037,7 +1043,7 @@ cores_morph <- cores_tidy %>%
 # Run MCA
 mca_res_cores <- MCA(cores_morph, graph = FALSE, quali.sup = 1, method = "Burt")
 
-fviz_mca_var(mca_res_cores, labelsize = 3, col.var = "contrib",
+fviz_mca_var(mca_res_cores, labelsize = 5, col.var = "contrib",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE, invisible = "quali.sup",
              ggtheme = theme_gray(), title = "") +
@@ -1048,7 +1054,7 @@ fviz_mca_var(mca_res_cores, labelsize = 3, col.var = "contrib",
 
 \n
 
-```{r ANOVAcoremorphology, echo=FALSE, fig.cap = "Core Morphology multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference."}
+```{r ANOVAcoremorphology, echo=FALSE, fig.cap = "Core Morphology multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference (p-value ≥ 0.05)."}
 
 
 ######################
@@ -1163,7 +1169,7 @@ In the case of Dimension 2 (12.3%), as in the core morphology analysis, only the
 
 \n
 
-```{r MCAcoreuse, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot for Core Use. For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article."}
+```{r MCAcoreuse, echo=FALSE, fig.cap = "Multiple Correspondence Analysis plot (first two dimensions) for Core Use. The color ramp represents the contribution (in %) of the variable categories to the definition of the dimensions"}
 
 # Filter specific categories for MCA analysis
 cores_use <- cores_tidy %>%
@@ -1174,7 +1180,7 @@ cores_use <- cores_tidy %>%
 # Run MCA
 mca_res_core_use <- MCA(cores_use, graph = FALSE, quali.sup = 1, method = "Burt")
 
-fviz_mca_var(mca_res_core_use, labelsize = 3, col.var = "contrib",
+fviz_mca_var(mca_res_core_use, labelsize = 5, col.var = "contrib",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE, invisible = "quali.sup",
              ggtheme = theme_gray(), title = "") +
@@ -1185,7 +1191,7 @@ fviz_mca_var(mca_res_core_use, labelsize = 3, col.var = "contrib",
 
 \n
 
-```{r ANOVAcoreuse, echo=FALSE, fig.cap = "Core Use multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference."}
+```{r ANOVAcoreuse, echo=FALSE, fig.cap = "Core Use multi-comparison bootstrap ANOVA. Error bars represent 95% confidence interval from the mean. Contexts sharing the same set of letters do not present statistically significant difference (p-value ≥ 0.05)."}
 
 
 ######################
@@ -1294,7 +1300,7 @@ The analyses presented above aimed to provide a first evaluation of lithic techn
 
 \n
 
-```{r ANOVAsimilarity, echo = FALSE, fig.cap= "Heat map summarizing the number of non-significantly different bootstrapped ANOVA tests between each pair of assemblages. For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article."}
+```{r ANOVAsimilarity, echo = FALSE, fig.cap= "Heat map summarizing the number of non-significantly different bootstrapped ANOVA tests between each pair of assemblages. Letters inside each square indicate the heuristic domains responsible for the similarities between assemblages: A - Platform Maintenance; B - Direction of Core Exploitation; C - Dorsal Surface Convexity; D - Elongated blanks techno-morphology; E - Core Morphology; F - Core Use. For more information on each of the contexts please refer to Figure 1 and Table 2."}
 
 dist <- read_csv("../data/derived_data/context_distance.csv")
 
@@ -1314,6 +1320,8 @@ lower_tri <- get_lower_tri(dist)
 
 
 melted_dist <- melt(lower_tri, na.rm = TRUE)
+
+tests <- c("   B C\nD E F",  "   B C\nD E F", "A B C\nD E F", "A B C\nD E F", "        \nD E   ", "   B   \nD E F", "   B   \n   E F", "         \n   E F", "        \nD E F", "A B C\nD E F", "A     C\nD E F", "A B   \nD E F", "       C\nD E F", "  B   \n  E F", "   B   \n   E F", "A     \n        ", "A       \n   E F",  "       C\nD E F", "A B C\nD E F", "        \nD E F", "A B   \nD E F", "A B   \n  E F", "A      \n      F", "A      \nD E F", "A      \nD E F", "        \nD E F", "  B   \nD E F", "A      \n      F", "A      \n      F", "        \n   E F", "         \nD E F", "A     C\nD E F", "A B   \n   E F", "A      \n       F", "A B   \nD E F", "A      \nD E F", "   B C\n   E F", "A B C\n  E F", "   B C\nD E F","A    C\n   E F", "       C\nD E F", "   B C\nD E F", "A     C\nD E F", "A    C\n  E F", "   B C\nD     F")
 
 
 
@@ -1341,34 +1349,36 @@ ggplot(data = melted_dist, aes(Var1, Var2, fill = value))+
  guides(fill = guide_colorbar(barwidth = 7, barheight = 1,
                 title.position = "top", title.hjust = 0.2))+
 
- coord_fixed()
+ coord_fixed() +
+ geom_text(aes(label = tests), size = 3)
+
 
 
 ```
 
 \n
 
-In the first instance, chronological change in the technological options of lithic production is attested by significant dissimilarities between some contexts within multi-layered sites. This pattern is mostly visible in the particularities of platform maintenance and core exploitation domains. However, this seems to have only occurred at AMB and PAP. At AMB, two general technological phases can be distinguished, with results differentiating between the oldest contexts (AMB VI and AMB IV) and the more recent level (AMB II). At PAP, the separation also occurs in the transition between the two oldest levels (PAP 5’25-6’25 and PAP 4’75-5’25) and the most recent one (PAP 4’00-4’75). These disruptions are, at both sites, coincident with the transition from the traditionally-defined Upper Solutrean to Solutreo-Gravettian (or Evolved Upper Solutrean) phases, which is thought to have occurred, at these sites, at around c. 20.5 ka cal BP [@munoz_ibanez_puntas_2000; @fullola_industrias_1979; @ripoll_lopez_cueva_1988]. Thus, previous differences detected between those phases, based on typological grounds and pointing to a decline in the use of flat-retouched points and the increasing presence of backed shouldered points [@aura_solutrenses_1989; @tiffagom_pierre_2006], seem to be corroborated by significant changes in the technological substrate. The most important changes regarding this transition comprise an increasing use of reduction sequences oriented to the production of highly elongated blanks, using opposed bidirectional methods on prismatically-organized cores. The absence of this tendency at VB [see e.g., @cascalheira_chronological_2015; @cascalheira_influencia_2013] might result from a lack of effective occupation at the site during the later parts of the LGM [which is rather probable given that the latest radiocarbon date for the solutrean occupations at the site is c. 21 ka cal BP - @cascalheira_chronological_2015; @cascalheira_vale_2012], but also by technological drift occuring during this period across Iberia, as suggested by the fact that a Solutreo-Gravettian phase was, so far, not clearly recognized in the Atlantic facade of Iberia. 
+In the first instance, chronological change in the technological options of lithic production is attested by significant dissimilarities between some contexts within multi-layered sites. This pattern is mostly visible in the particularities of platform maintenance and core exploitation domains. However, this seems to have only occurred at AMB and PAP. At AMB, two general technological phases can be distinguished, with results differentiating between the oldest contexts (AMB VI and AMB IV) and the more recent level (AMB II). At PAP, the separation also occurs in the transition between the two oldest levels (PAP 5’25-6’25 and PAP 4’75-5’25) and the most recent one (PAP 4’00-4’75). These disruptions are, at both sites, coincident with the transition from the traditionally-defined Upper Solutrean to Solutreo-Gravettian (or Evolved Upper Solutrean) phases, which is thought to have occurred, at these sites, at around c. 20.5 ka cal BP [@munoz_ibanez_puntas_2000; @fullola_industrias_1979; @ripoll_lopez_cueva_1988]. Thus, previous differences detected between those phases, based on typological grounds and pointing to a decline in the use of flat-retouched points and the increasing presence of backed shouldered points [@aura_solutrenses_1989; @tiffagom_pierre_2006], seem to be corroborated by significant changes in the technological substrate. The most important changes regarding this transition comprise an increasing use of reduction sequences oriented to the production of highly elongated blanks, using opposed bidirectional methods on prismatically-organized cores. The absence of this tendency at VB [see e.g., @cascalheira_chronological_2015; @cascalheira_influencia_2013] might result from a lack of effective occupation at the site during the later parts of the LGM [which is rather probable given that the latest radiocarbon date for the solutrean occupations at the site is c. 21 ka cal BP - @cascalheira_chronological_2015; @cascalheira_vale_2012], but also by technological drift occuring during this period across Iberia, as suggested by the fact that a Solutreo-Gravettian phase is, so far, not clearly recognized in the Atlantic facade of Iberia. 
 
 The distribution of non-significantly different statistical results in Figure \@ref(fig:ANOVAsimilarity) reveals also that the degree of similarity between the earliest occupations of the spanish sites and VB is rather high. Particularly, lower blank elongation and simple unidirectional reduction strategies seem to explain the proximity between all levels of VB and the two oldest contexts of PAP and AMB (similar in between c. 75% and c. 60% of the tests, respectively).
 
-According to the traditional chronological organization of the Solutrean, differences in the extent of social networks in southern and western Iberia may have separated early from later phases of the technocomplex. Zilhão [-@zilhao_seeing_2013], for example, suggests a correlation between global environmental constraints and point types distributions, with epochs of regional convergence broadly coinciding with periods of colder climate (i.e., the Middle Solutrean), and epochs of regional divergence broadly coinciding with periods of more temperate climate (i.e., Upper Solutrean). This relationship can be only explained by fluctuations in size, extension and shape of social networks, with more rigorous environments motivating the existence of long-distance circulation of individuals, objects and ideas, and warmer climates being responsible for decreasing the frequency and intensity of long-distance contacts and favouring cultural drift [see also @banks_investigating_2009]. Although the results of this study seem to agree with these ideas, they also become problematic when looking at the chronologies and types of lithic projectiles associated with each context. In fact, under the traditional scheme, all three levels of VB are considered Upper Solutrean but appear here correlated with contexts classified as Middle Solutrean (PAP 5'25-6'25 and AMB VI) [@munoz_ibanez_puntas_2000]. Thus, technological convergence cannot be explained by the traditional phased model based on points typology, but only by the association between the two assemblages in terms of absolute chronology [despite the problems associated with some of the dates from the spanish sites - see @cascalheira_chronological_2015 for more information on this topic]. This, in turn, may have implications for the functional organization of settlement within the Mediterranean region that require further dedicated studies to be ascertained conclusively. What seems relevant is that these results open the possibility for the existence of technological convergence across southern Iberia, with contact occuring in a way that enabled sharing of the complete technological solutions. Further evidence for this contacts is provided by the similiarities present in other aspects of the archaeological record, such as the style of the animal representations in an engraved slab from VB C and the Middle Solutrean portable art elements in PAP [@simon_vallejo_primeras_2012; @villaverde_arte_1994].
+According to the traditional chronological scheme of the Solutrean, differences in the extent of social networks in southern and western Iberia occur between the early and later phases of the technocomplex. Zilhão [-@zilhao_seeing_2013], for example, suggests a correlation between global environmental constraints and point types distributions, with epochs of regional convergence broadly coinciding with periods of colder climate (i.e., the Middle Solutrean), and epochs of regional divergence broadly coinciding with periods of more temperate climate (i.e., Upper Solutrean). This relationship can be only explained by fluctuations in size, extension and shape of social networks, with more rigorous environments motivating the existence of long-distance circulation of individuals, objects and ideas, and warmer climates being responsible for decreasing the frequency and intensity of long-distance contacts and favouring cultural drift [see also @banks_investigating_2009]. Although the results of this study seem to agree with these ideas, they also become problematic when looking at the chronologies and types of lithic projectiles associated with each context. In fact, under the traditional scheme, all three levels of VB are considered Upper Solutrean but appear here correlated with contexts classified as Middle Solutrean (PAP 5'25-6'25 and AMB VI) [@munoz_ibanez_puntas_2000]. Thus, technological convergence cannot be explained by the traditional phased model based on points typology, but only by the association between the two assemblages in terms of absolute chronology [despite the problems associated with some of the dates from the spanish sites - see @cascalheira_chronological_2015 for more information on this topic]. This, in turn, may have implications for the functional organization of settlement within the Mediterranean region that require further dedicated studies to be ascertained conclusively. What seems relevant is that these results open the possibility for the existence of technological convergence across southern Iberia, with contact occuring in a way that enabled sharing of the complete technological solutions. Further evidence for this contacts is provided by the similiarities present in other aspects of the archaeological record, such as the style of the animal representations in an engraved slab from VB C and the Middle Solutrean portable art elements in PAP [@simon_vallejo_primeras_2012; @villaverde_arte_1994].
 
 Another relevant, general, trend is the progressive reduction of platform facetting over time at AMB and PAP, even though, with exception of VALM, assemblages present reduced frequencies of platform preparation. Still, although bifacial thinning flakes have been removed from the analysis, the lower percentages of faceted platforms in latest assemblages at AMB and PAP is probably also indicative of a gradual reduction in the importance of bifacial debitage over time [see @andrefsky_jr_lithics_2005; @parry_expedient_1987 for similar patterns], since the recurrent use of small-scale flaking of striking surfaces to support “on-the-edge” marginal percussion) is typically associated with bifacial knapping strategies [@stout_late_2014]. On the other hand, platform preparation through facetting has been shown to relate with a purposeful alteration of exterior platform angles in other type of reduction schemes, to control the size and shape of the extracted blanks. One cannot exclude thus that, in some of the studied assemblages, platform facetting was used to control blanks' morphometrics. At VALM, the largest frequency of platform facetting preferentially associated with the production of elongated blanks seems to corroborate this interpretation. Thus, the lower frequencies of platform facetting in the remaining assemblages on the one hand, and their significantly high presence at other Solutrean sites in the portuguese Estremadura [e.g., Casal do Cepo - @zilhao_o_1997] on the other hand, seems to indicate the existence of particular technological solutions in central Portugal that might imply lower degrees of technological knowledge sharing with the southernmost regions of Iberia. Although some aspects of the singularity of VALM might originate from a biased collection of the materials during the excavation, already mentioned by Zilhão [-@zilhao_o_1997], or even from possible differences arising from the single-horizon open-air nature of VALM *contra* the palimpsest-derived assemblages of the remaining sites, the technological dissimilarities detected in this study seem to corroborate the isolation of central Portugal as an independent techno-cultural unit.
 
 The Atlantic vs Mediterranean division is also noteworthy in the overall higher degree of similarity between the two spanish sites, than between those sites and the portuguese assemblages. In the context of the cultural transmission assumptions used in this study, it is tempting to argue that this pattern might be related with a distance factor, in which geographically closer assemblages tend to present a higher degree of technological similarity. A distance decay factor, in which the similiatiry of cultural traits is expected to decline over distance and that some degree of spatial autocorrelation should exist, is, in fact, one of the major assumptions in archaeological cultural transmission processes literature [see e.g., @crema_culture_2014; @premo_spatial_2011; @shennan_isolation-by-distance_2015; @bentley_effects_2014]. Accepting this interpretation would suggest the existence of marked technological differences between what is traditionally defined as the Mediterranean and the Portuguese Solutrean facies, somehow confirming the typologically-based interpretations.
 
-Finally, it is also noteworthy that, despite the similiarites in some technological aspects, all VB contexts appear isolated. In previous studies, technological idiosyncrasies of VB have been noted and are not exclusive for LGM occupations [see e.g., @marreiros_lithic_2015]. Possible explanations are related with the low knapping quality of chert, featuring small nodules and volumes highly fractured by tectonics [@pereira_territory_2016], available within the VB raw materials acquisition territory. This most likely led hunter-gatherers to develop specific technological strategies fitted to the characteristics of the raw materials [for further debate on the influence of raw materials in technological strategies see @andrefsky_jr_raw-material_1994]. To some degree, VB technological options are stable across the site's sequence, and independent of changes introduced in tools shape at the beginning of each Upper Paleolithic techno-complex [@cascalheira_cross-scale_2017]. In the particular case of the Solutrean and the hypotheses raised by this study, technological practices transmission might have occurred in contexts of a high degree of social intimacy, but ecological regional constraints did not allow the generalization of basic technological patterns.
+Finally, it is also noteworthy that, despite the similarities in some technological aspects, all VB contexts tend to appear isolated from the remaining contexts used in this study. In previous studies, technological idiosyncrasies of VB have been noted and are not exclusive for LGM occupations [see e.g., @marreiros_lithic_2015]. Possible explanations are related with the low knapping quality of chert, featuring small nodules and volumes highly fractured by tectonics [@pereira_territory_2016], available within the VB raw materials acquisition territory. This most likely led hunter-gatherers to develop specific technological strategies fitted to the characteristics of the raw materials [for further debate on the influence of raw materials in technological strategies see @andrefsky_jr_raw-material_1994]. To some degree, VB technological options are stable across the site's sequence, and independent of changes introduced in tools shape at the beginning of each Upper Paleolithic techno-complex [@cascalheira_cross-scale_2017]. In the particular case of the Solutrean and the hypotheses raised by this study, technological practices transmission might have occurred in contexts of a high degree of social intimacy, but regional ecological constraints did not allow the generalization of basic technological patterns.
 
-As in any other geographies and timeframes, technological variation over the LGM in southern Iberia was the result of a complex relationship among patterns of inheritance, interaction, and regional adaptation. Population interaction across larger territories was certainly a key factor of the adaptive response to the impact of climate and landscape modifications and seem to have functioned through sharing behaviors of stylistic/typological concepts, but also of technological solutions. Concept sharing could have occurred across regions in different acculturation environments, depending on the geographical distance between communities and preferential cultural ties, but also on the impact that local resources could have had in the technological decisions. After all, humans, as other biota, interact with the environment at distinct scales and create self-reinforcing adaptive patterns [@sundstromTransdisciplinaryApplicationCrossscale2014]. The multiple but distinct scales of self-organization during the LGM in southern Iberia, and the distribution of behaviors within and across scales might have been one of the most important generators of resilience for those communities [@cascalheira_cross-scale_2017].
+As in any other geographies and timeframes, technological variation over the LGM in southern Iberia was the result of a complex relationship among patterns of inheritance, interaction, and regional adaptation. Population interaction across larger territories was certainly a key factor of the adaptive response to the impact of climate and landscape change and seem to have functioned through sharing behaviors of stylistic/typological concepts, but also of technological solutions. Concept sharing could have occurred across regions in different acculturation environments, depending on the geographical distance between communities and preferential cultural ties, but also on the impact that local resources could have had in the technological decisions. After all, humans, as other biota, interact with the environment at distinct scales and create self-reinforcing adaptive patterns [@sundstromTransdisciplinaryApplicationCrossscale2014]. The multiple but distinct scales of self-organization during the LGM in southern Iberia, and the distribution of behaviors within and across scales might have been one of the most important generators of resilience for those communities [@cascalheira_cross-scale_2017].
 
-Only further studies using more data from the regions addressed in this study, and other territories located between them (e.g., Alentejo, southwestern Spain), will allow the ascertainment of the extension of the several scales of influence and contacts.
+Only further studies using more data from the regions addressed in this study, and other territories located between them, such as the Alentejo, southwestern Spain, or Central Iberia [@alcaraz-castanoHumanSettlementCentral2017], will allow the ascertainment of the extension of the several scales of influence and contacts.
 
 \n
 
 # Acknowledgments
 
-Financial support for the analysis of the materials included in this study was provided by the Portuguese National Science Foundation (FCT) (grant SFRH/BD/65527/2009) and by a STSM COST action (ref. COST-STSM-TD0902-10855). For permission to analyze the materials I would like to thank the Servicio de Investigación Prehistórica de Valencia at the Museu de Prehistoria de Valencia, the Museo Arqueológico Provincial de Almería, and the Museu Nacional de Arqueologia in Portugal.
+Financial support for the analysis of the materials included in this study was provided by the Fundação para a Ciência e Tecnologia (FCT) (grant SFRH/BD/65527/2009) and by a STSM COST action (ref. COST-STSM-TD0902-10855). The author is funded by FCT, contract ref. DL 57/2016/CP1361/CT0026. Work at Vale Boi is funded by the project ALG-01-0145-FEDER-27833 - PTDC/HAR-ARQ/27833/2017. For permission to analyze the materials I would like to thank the Servicio de Investigación Prehistórica de Valencia at the Museu de Prehistoria de Valencia, the Museo Arqueológico Provincial de Almería, and the Museu Nacional de Arqueologia in Portugal. The author would like to thank to Dr. Manuel Alcaraz-Castaño for the insightful comments on the paper, as well as to the anonymous reviewer whose suggestions really helped to improve the quality of the final version of the article.
 
 
 ##### pagebreak

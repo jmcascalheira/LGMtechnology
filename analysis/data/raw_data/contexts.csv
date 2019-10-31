@@ -1,11 +1,11 @@
-﻿Site,Site type,Sector,Context
-Vale Almoinha (VALM),Open-air,,
-Vale Boi (VB),Rockshelter,,Layer A
-,,,Layer B
-,,,Layer C
-Ambrosio (AMB),Rockshelter,1986 campaign,Layer II
-,,,Layer IV
-,,,Layer VI
-Parpalló (PAP),Cave,Sector L,4’00-4’75
-,,,4’75-5’25
-,,,5’25-6’25
+﻿Site,Site type,Sector,Context,Classic phase attribution
+Vale Almoinha (VALM),Open-air,,,Middle Solutrean
+Vale Boi (VB),Rockshelter,,Layer A,Upper Solutrean
+,,,Layer B,Upper Solutrean
+,,,Layer C,Upper Solutrean
+Ambrosio (AMB),Rockshelter,1986 campaign,Layer II,Solutreo-Gravettian
+,,,Layer IV,Upper Solutrean
+,,,Layer VI,Middle Solutrean
+Parpalló (PAP),Cave,Sector L,4’00-4’75,Solutreo-Gravettian
+,,,4’75-5’25,Upper Solutrean
+,,,5’25-6’25,Middle Solutrean

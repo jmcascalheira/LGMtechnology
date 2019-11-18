@@ -1,0 +1,84 @@
+---
+output: 
+    bookdown::pdf_document2:
+      toc: False
+      number_sections: False
+classoption: landscape
+
+header-includes:
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \pagenumbering{gobble}
+
+---
+
+```{r, setup, echo = FALSE, include=FALSE}
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE)
+
+library(tidyverse)
+library(tab)
+library(RcmdrMisc)
+library(kableExtra)
+
+```
+
+```{r load_data, echo = FALSE}
+
+# Load data
+blanks <- read_csv("../data/raw_data/blanks.csv")
+cores <- read_csv("../data/raw_data/cores.csv")
+
+```
+
+```{r cores, echo = FALSE}
+
+# Calculate Elongation/Flattening for blanks and tidy data (including lumping categories with little (5%) representation into 'Other')
+cores_tidy <- cores %>%
+  drop_na(Length, Width, Thickness) %>% 
+  mutate(Elongation = Length / Width) %>%
+  mutate(Flattening = Width / Thickness) %>% 
+  mutate(CoreType = fct_lump(CoreType, prop = 0.05)) %>%
+  mutate(BlankType = fct_lump(BlankType, prop = 0.05)) %>%
+  mutate(CoreSection = fct_lump(CoreSection, prop = 0.05)) %>%
+  mutate(PlatformType = fct_lump(PlatformType, prop = 0.05)) %>%
+  mutate(CortexLoc = fct_lump(CortexLoc, prop = 0.05)) %>%
+  mutate(CortexPerc = dplyr::recode(CortexPerc, "75-95%" = "76-100%", "25-75%" ="26-75%", "100%" = "76-100%", "<25%" = "1-25%", ">75%" = "76-100%", "0%" = "0%")) %>% 
+  mutate(BlankType = dplyr::recode(BlankType, "Blades" = "Elongated product", "Bladelets" = "Elongated product"))
+
+# Bin continous variables ("natural" is used to cut between bins to be determined by a k-means clustering)
+cores_tidy$ElongFact <- binVariable(cores_tidy$Elongation, bins = 2, method = "natural", labels = c("low", "high"))
+cores_tidy$FlattFact <- binVariable(cores_tidy$Flattening, bins = 2, method = "natural", labels = c("low", "high"))
+cores_tidy$WeightFact <- binVariable(cores_tidy$Weight, bins = 2, method = "natural", labels = c("low", "high"))
+
+```
+
+## Table S3 - Cores attribute frequency
+
+```{r cores_cross_table, echo=FALSE}
+
+var_list <- c("CoreType", "Platforms", "CoreSection", "BlankType", "CortexPerc", "Weight", "Elongation", "Flattening")
+
+cores_tidy <- as.data.frame(cores_tidy)
+
+cores_tidy$Platforms <- as.factor(cores_tidy$Platforms)
+
+cores_table <- tabmulti(cores_tidy, "Context", var_list,
+                 p.include = FALSE,
+                 n.headings = FALSE,
+                 bold.varnames = TRUE,
+                 bold.colnames = TRUE,
+                 ynames = c(CoreType = "Core type", Platforms = "Platforms", CoreSection = "Core section", BlankType = "Blank type", CortexPerc = "Cortex %", Weight = "Weight", Elongation = "Elongation", Flattening = "Flattening"))
+
+cores_table <- cores_table %>% 
+  as_tibble() %>% 
+  select(" " = Variable, `AMB II`, `AMB IV`, `AMB VI`, `PAP 4'00-4'75`, `PAP 4'75-5'25`, `PAP 5'25-6'25`, `VALM`, `VB A`, `VB B`, `VB C`, Total = Overall)
+
+knitr::kable(cores_table, "latex", booktabs = TRUE) %>% 
+  kable_styling(latex_options = c("scale_down"))
+
+```

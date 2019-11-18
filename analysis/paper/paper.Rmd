@@ -1321,7 +1321,7 @@ lower_tri <- get_lower_tri(dist)
 
 melted_dist <- melt(lower_tri, na.rm = TRUE)
 
-tests <- c("   B C\nD E F",  "   B C\nD E F", "A B C\nD E F", "A B C\nD E F", "        \nD E   ", "   B   \nD E F", "   B   \n   E F", "         \n   E F", "        \nD E F", "A B C\nD E F", "A     C\nD E F", "A B   \nD E F", "       C\nD E F", "  B   \n  E F", "   B   \n   E F", "A     \n        ", "A       \n   E F",  "       C\nD E F", "A B C\nD E F", "        \nD E F", "A B   \nD E F", "A B   \n  E F", "A      \n      F", "A      \nD E F", "A      \nD E F", "        \nD E F", "  B   \nD E F", "A      \n      F", "A      \n      F", "        \n   E F", "         \nD E F", "A     C\nD E F", "A B   \n   E F", "A      \n       F", "A B   \nD E F", "A      \nD E F", "   B C\n   E F", "A B C\n  E F", "   B C\nD E F","A    C\n   E F", "       C\nD E F", "   B C\nD E F", "A     C\nD E F", "A    C\n  E F", "   B C\nD     F")
+tests <- c("   B C\nD E F",  "   B C\nD E F", "A B C\nD E F", "A B C\nD E F", "        \nD E   ", "   B   \nD E F", "   B   \n   E F", "         \n   E F", "        \nD E F", "A B C\nD E F", "A     C\nD E F", "A B   \nD E F", "       C\nD E F", "  B   \n  E F", "   B   \n   E F", "A     \n        ", "A       \n   E F",  "       C\nD E F", "A B C\nD E F", "        \nD E F", "A B   \nD E F", "A B   \n  E F", "A      \n      F", "A      \nD E F", "A      \nD E F", "        \nD E F", "  B   \nD E F", "A      \n      F", "A      \n      F", "        \n   E F", "         \nD E F", "A     C\nD E F", "A B   \n   E F", "A      \n       F", "A B   \nD E F", "A      \nD E F", "   B C\n   E F", "A B C\n  E F", "   B C\nD E F","A    C\n   E F", "       C\nD E F", "     C\nD E F", "A     C\nD E F", "A    C\n  E F", "   B C\nD     F")
 
 
 

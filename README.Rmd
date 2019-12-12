@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "README-"
 )
-# Please put your title here to include it in the file below. 
+
 Title <- "Territoriality and the organization of technology during the Last Glacial Maximum in southwestern Europe"
 
 ```
@@ -24,11 +24,11 @@ Title <- "Territoriality and the organization of technology during the Last Glac
 
 # LGMTechnology
 
-This repository contains the data and code for our paper:
+This repository contains the data and code for the paper:
 
-> Cascalheira, J. (2019). _`r Title`_. Name of journal/book <https://doi.org/xxx/xxx>
+> Cascalheira, J. (2019). _`r Title`_. PLOS ONE 14(12): e0225828 <https://doi.org/10.1371/journal.pone.0225828>
 
-Our pre-print is online here:
+The pre-print is online here:
 
 > Cascalheira, J. (2019). _`r Title`_. Accessed `r format(Sys.Date(), "%d %b %Y")`. Online at <https://doi.org/10.31235/osf.io/fgxtu>
 

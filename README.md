@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--09--18-brightgreen.svg)](https://github.com/jmcascalheira/ScaledPiecesVB/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--12--12-brightgreen.svg)](https://github.com/jmcascalheira/ScaledPiecesVB/commits/master)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.2.4-brightgreen.svg)](https://cran.r-project.org/)
 [![Licence](https://img.shields.io/github/license/mashape/apistatus.svg)](http://choosealicense.com/licenses/mit/)
@@ -9,17 +9,18 @@ version](https://img.shields.io/badge/R%3E%3D-3.2.4-brightgreen.svg)](https://cr
 
 # LGMTechnology
 
-This repository contains the data and code for our paper:
+This repository contains the data and code for the paper:
 
 > Cascalheira, J. (2019). *Territoriality and the organization of
 > technology during the Last Glacial Maximum in southwestern Europe*.
-> Name of journal/book <https://doi.org/xxx/xxx>
+> PLOS ONE 14(12): e0225828
+> <https://doi.org/10.1371/journal.pone.0225828>
 
-Our pre-print is online here:
+The pre-print is online here:
 
 > Cascalheira, J. (2019). *Territoriality and the organization of
 > technology during the Last Glacial Maximum in southwestern Europe*.
-> Accessed 18 Sep 2019. Online at
+> Accessed 12 Dec 2019. Online at
 > <https://doi.org/10.31235/osf.io/fgxtu>
 
 ### How to cite
@@ -28,7 +29,7 @@ Please cite this compendium as:
 
 > Cascalheira, J. (2019). *Compendium of R code and data for
 > Territoriality and the organization of technology during the Last
-> Glacial Maximum in southwestern Europe*. Accessed 18 Sep 2019. Online
+> Glacial Maximum in southwestern Europe*. Accessed 12 Dec 2019. Online
 > at <https://doi.org/10.17605/OSF.IO/YD2VE>
 
 ### How to download or install

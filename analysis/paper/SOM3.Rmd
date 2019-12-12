@@ -70,6 +70,7 @@ cores_tidy$Platforms <- as.factor(cores_tidy$Platforms)
 cores_table <- tabmulti(cores_tidy, "Context", var_list,
                  p.include = FALSE,
                  n.headings = FALSE,
+                 latex = TRUE,
                  bold.varnames = TRUE,
                  bold.colnames = TRUE,
                  ynames = c(CoreType = "Core type", Platforms = "Platforms", CoreSection = "Core section", BlankType = "Blank type", CortexPerc = "Cortex %", Weight = "Weight", Elongation = "Elongation", Flattening = "Flattening"))
